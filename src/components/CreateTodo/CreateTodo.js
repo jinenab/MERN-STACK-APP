@@ -2,32 +2,32 @@ import React, { Component } from "react";
 import axios from 'axios';
 export default class CreateTodo extends Component {
   state = {
-    description: "",
-    responsible: "",
-    priority: "",
-    completed: false
+    todo_description: "",
+    todo_responsible: "",
+    todo_priority: "",
+    todo_completed: false
   };
   onChangeDescription(e) {
     console.log(e.target.value);
-    this.setState({ description: e.target.value });
+    this.setState({ todo_description: e.target.value });
   }
   onChangeResponsible(e) {
-    this.setState({ responsible: e.target.value });
+    this.setState({ todo_responsible: e.target.value });
   }
   onChangePriority(e) {
-    this.setState({ priority: e.target.value });
+    this.setState({ todo_priority: e.target.value });
   }
   onSubmit() {
     console.log(`Form submitted:`);
-    console.log(`Todo Description: ${this.state.description}`);
-    console.log(`Todo Responsible: ${this.state.responsible}`);
-    console.log(`Todo Priority: ${this.state.priority}`);
+    console.log(`Todo Description: ${this.state.todo_description}`);
+    console.log(`Todo Responsible: ${this.state.todo_responsible}`);
+    console.log(`Todo Priority: ${this.state.todo_priority}`);
 
     const newTodo={
-           todo_description: this.state.description,
-           todo_responsible: this.state.responsible,
-           todo_priority: this.state.priority,
-           todo_completed: this.state.completed
+           todo_description: this.state.todo_description,
+           todo_responsible: this.state.todo_responsible,
+           todo_priority: this.state.todo_priority,
+           todo_completed: this.state.todo_completed
     }
 
 
@@ -35,10 +35,10 @@ export default class CreateTodo extends Component {
     res=>console.log(res.data)
     )
     this.setState({
-      description: "",
-      responsible: "",
-      priority: "",
-      completed: false
+      todo_description: "",
+      todo_responsible: "",
+      todo_priority: "",
+      todo_completed: false
     });
   }
   render() {
