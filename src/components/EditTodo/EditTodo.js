@@ -5,7 +5,7 @@ export default class EditTodo extends Component {
   constructor(props) {
        super(props);
 
-       this.state = {
+      this.state = {
            todo_description: '',
            todo_responsible: '',
            todo_priority: '',
@@ -49,6 +49,35 @@ export default class EditTodo extends Component {
         this.setState({
             todo_completed: !this.state.todo_completed
         });
+    }
+    onSubmit(e) {
+        e.preventDefault();
+        const obj = {
+            todo_description: this.state.todo_description,
+            todo_responsible: this.state.todo_responsible,
+            todo_priority: this.state.todo_priority,
+            todo_completed: this.state.todo_completed
+        };
+        console.log(obj);
+        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
+            .then(res => console.log(res.data));
+
+        this.props.history.push('/');
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        const obj = {
+            todo_description: this.state.todo_description,
+            todo_responsible: this.state.todo_responsible,
+            todo_priority: this.state.todo_priority,
+            todo_completed: this.state.todo_completed
+        };
+        console.log(obj);
+        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, obj)
+            .then(res => console.log(res.data));
+
+        this.props.history.push('/');
     }
    render() {
           return (
@@ -124,7 +153,7 @@ export default class EditTodo extends Component {
                       <br />
 
                       <div className="form-group">
-                          <input type="submit" value="Update Todo" className="btn btn-primary" />
+                          <input type="submit" value="Update Todo" className="btn btn-primary" onClick={event =>this.onSubmit(event)} />
                       </div>
                   </form>
               </div>

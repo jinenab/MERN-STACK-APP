@@ -34,6 +34,7 @@ export default class CreateTodo extends Component {
     axios.post('http://localhost:4000/todos/add',newTodo).then(
     res=>console.log(res.data)
     )
+
     this.setState({
       todo_description: "",
       todo_responsible: "",
@@ -48,6 +49,7 @@ export default class CreateTodo extends Component {
         <form></form>
         <label>Description</label>
         <input
+        value={this.state.todo_description}
           type="text"
           className="form-control"
           onChange={event => this.onChangeDescription(event)}
@@ -57,6 +59,8 @@ export default class CreateTodo extends Component {
           <input
             type="text"
             className="form-control"
+            value={this.state.todo_responsible}
+
             onChange={event => this.onChangeResponsible(event)}
           />
         </div>
@@ -79,6 +83,7 @@ export default class CreateTodo extends Component {
               name="priorityOptions"
               id="priorityMedium"
               value="Medium"
+
               onChange={event => this.onChangePriority(event)}
             />
             <label className="form-check-label">Medium</label>
@@ -90,6 +95,7 @@ export default class CreateTodo extends Component {
               name="priorityOptions"
               id="priorityHigh"
               value="High"
+
               onChange={event => this.onChangePriority(event)}
             />
             <label className="form-check-label">High</label>
