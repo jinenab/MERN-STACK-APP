@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { TodoList, EditTodo, CreateTodo} from "./components";
 import logo from "./logo.png";
-
+import "./index.css";
 class App extends Component {
   render() {
     return (
