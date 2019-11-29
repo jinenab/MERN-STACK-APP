@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Todo = props => (
+  props.todo.todo_completed?"":
     <tr>
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_responsible}</td>
