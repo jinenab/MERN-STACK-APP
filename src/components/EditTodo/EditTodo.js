@@ -26,6 +26,30 @@ export default class EditTodo extends Component {
                console.log(error);
            })
    }
+
+   onChangeTodoDescription(e) {
+        this.setState({
+            todo_description: e.target.value
+        });
+    }
+
+    onChangeTodoResponsible(e) {
+        this.setState({
+            todo_responsible: e.target.value
+        });
+    }
+
+    onChangeTodoPriority(e) {
+        this.setState({
+            todo_priority: e.target.value
+        });
+    }
+
+    onChangeTodoCompleted(e) {
+        this.setState({
+            todo_completed: !this.state.todo_completed
+        });
+    }
    render() {
           return (
               <div>
@@ -35,7 +59,8 @@ export default class EditTodo extends Component {
                           <label>Description: </label>
                           <input  type="text"
                                   className="form-control"
-                                  onChange={this.onChangeTodoDescription}
+                                  value={this.state.todo_description}
+                                  onChange={event => this.onChangeTodoDescription(event)}
                                   />
                       </div>
                       <div className="form-group">
@@ -43,7 +68,8 @@ export default class EditTodo extends Component {
                           <input
                                   type="text"
                                   className="form-control"
-                                  onChange={this.onChangeTodoResponsible}
+                                  value={this.state.todo_responsible}
+                                  onChange={event =>this.onChangeTodoResponsible(event)}
                                   />
                       </div>
                       <div className="form-group">
@@ -52,8 +78,9 @@ export default class EditTodo extends Component {
                                       type="radio"
                                       name="priorityOptions"
                                       id="priorityLow"
+                                      value="Low"
                                       checked={this.state.todo_priority==='Low'}
-                                      onChange={this.onChangeTodoPriority}
+                                      onChange={event=>this.onChangeTodoPriority(event)}
                                       />
                               <label className="form-check-label">Low</label>
                           </div>
@@ -62,8 +89,9 @@ export default class EditTodo extends Component {
                                       type="radio"
                                       name="priorityOptions"
                                       id="priorityMedium"
+                                      value="Medium"
                                       checked={this.state.todo_priority==='Medium'}
-                                      onChange={this.onChangeTodoPriority}
+                                      onChange={event=>this.onChangeTodoPriority(event)}
                                       />
                               <label className="form-check-label">Medium</label>
                           </div>
@@ -72,8 +100,9 @@ export default class EditTodo extends Component {
                                       type="radio"
                                       name="priorityOptions"
                                       id="priorityHigh"
+                                      value="High"
                                       checked={this.state.todo_priority==='High'}
-                                      onChange={this.onChangeTodoPriority}
+                                      onChange={event =>this.onChangeTodoPriority(event)}
                                       />
                               <label className="form-check-label">High</label>
                           </div>
@@ -83,7 +112,9 @@ export default class EditTodo extends Component {
                                   id="completedCheckbox"
                                   type="checkbox"
                                   name="completedCheckbox"
-                                  onChange={this.onChangeTodoCompleted}
+                                  onChange={event =>this.onChangeTodoCompleted(event)}
+                                  checked={this.state.todo_completed}
+                                  value={this.state.todo_completed}
                                   />
                           <label className="form-check-label" htmlFor="completedCheckbox">
                               Completed
